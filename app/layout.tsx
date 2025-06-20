@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Selinte Tuition",
-  description: "personal medical app",
+  description: "personal Educational app",
 };
 
 export default function RootLayout({

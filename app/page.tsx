@@ -6,6 +6,8 @@ import { FeatureBentoGrid } from "./_components/FeatureBentoGrid";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { AnimatedList } from "@/components/magicui/animated-list";
+import { AnimatedListDemo } from "./_components/AnimatedListDemo";
 
 export default function HeroSectionOne() {
   return (
@@ -53,7 +55,7 @@ export default function HeroSectionOne() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          Hope you guys enjoying your vacation .So you can see this with new ultimate features
+          Hang tight! Our website went for a quick nap. We'll wake it up soon! 😴💻
         </motion.p>
         <Link href={'/sign-in'}>
         <motion.div
@@ -92,11 +94,17 @@ export default function HeroSectionOne() {
         >
          
         </motion.div>
+        <div>
+          <AnimatedListDemo />
+        </div>
+    
       </div>
       <FeatureBentoGrid />
     </div>
   );
 }
+
+
 
 const Navbar = () => {
   const {user}=useUser();
