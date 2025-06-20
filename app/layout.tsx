@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ankara Medicals",
+  title: "Selinte Tuition",
   description: "personal medical app",
 };
 
