@@ -1,27 +1,31 @@
-// app/dashboard/notes/[semesterId]/[subjectCode]/page.tsx
-
 "use client";
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, FileText, Youtube } from 'lucide-react';
 import Link from 'next/link';
 
-// Import or define your material data structure
-const allMaterials = {
+// Define the type for materials
+type Material = {
+  type: 'pdf' | 'youtube';
+  title: string;
+  date: string;
+  url: string;
+  preview?: string;
+};
+
+// Materials data (you can extend it)
+const allMaterials: Record<string, Record<string, Material[]>> = {
   s6: {
-    'r': [
+    r: [
       {
         type: 'pdf',
         title: 'IMPORTANT TOPICS BASED ON PRVS PAPERS',
         date: '2025-03-10',
         url: 'materials/r/rqbank.pdf',
-        preview: 'materials/aad/basics-preview.jpg'
+        preview: 'materials/aad/basics-preview.jpg',
       },
-      // ... other materials for 'r' subject
     ],
-    // ... other subjects for s6
   },
-  // ... other semesters
 };
 
 export default function SubjectMaterials() {
@@ -29,15 +33,14 @@ export default function SubjectMaterials() {
   const semesterId = params.semesterId as string;
   const subjectCode = params.subjectCode as string;
 
-  // Get materials for this semester and subject
   const semesterKey = `s${semesterId}`;
-  const materials = allMaterials[semesterKey as keyof typeof allMaterials]?.[subjectCode] || [];
+  const materials = allMaterials[semesterKey]?.[subjectCode] ?? [];
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="mb-8">
-        <Link 
-          href={`/dashboard/notes/${semesterId}`} 
+        <Link
+          href={`/dashboard/notes/${semesterId}`}
           className="flex items-center text-blue-600 hover:underline"
         >
           <ArrowLeft className="h-5 w-5 mr-2" />
