@@ -1,34 +1,34 @@
 "use client";
 
-import { motion, useAnimation, useInView } from "motion/react";
-import { useEffect, useRef } from "react";
+import { motion, useAnimation, useInView, type Transition } from "framer-motion";
+import { ReactNode, useEffect, useRef } from "react";
 
 interface BoxRevealProps {
-  children: JSX.Element;
+  children: ReactNode;
   width?: "fit-content" | "100%";
   boxColor?: string;
   duration?: number;
+  delay?: number;
+  slideTransition?: Omit<Transition, "duration">; // Exclude duration as we handle it separately
 }
 
 export const BoxReveal = ({
   children,
   width = "fit-content",
   boxColor = "#5046e6",
-  duration,
+  duration = 0.5,
+  delay = 0.25,
+  slideTransition = { ease: "easeIn" },
 }: BoxRevealProps) => {
   const mainControls = useAnimation();
   const slideControls = useAnimation();
-
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView) {
       slideControls.start("visible");
       mainControls.start("visible");
-    } else {
-      slideControls.start("hidden");
-      mainControls.start("hidden");
     }
   }, [isInView, mainControls, slideControls]);
 
@@ -41,7 +41,7 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: duration ? duration : 0.5, delay: 0.25 }}
+        transition={{ duration, delay }}
       >
         {children}
       </motion.div>
@@ -53,7 +53,7 @@ export const BoxReveal = ({
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: duration ? duration : 0.5, ease: "easeIn" }}
+        transition={{ duration, ...slideTransition }}
         style={{
           position: "absolute",
           top: 4,
