@@ -1,134 +1,108 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/components/ui/calendar"
 
 export default function SchedulePage() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
-  
-  // Sample timetable data
+  // Sample timetable data with more subjects
   const timetable = [
     { day: "Monday", periods: [
-      { time: "9:30 - 10:20", subject: "Not set", teacher: "", room: "A12" },
-      { time: "10:20 - 11:00", subject: "Not set", teacher: "", room: "B05" },
-      { time: "11:00 - 11:40", subject: "Not set", teacher: "", room: "Lab 3" },
-      { time: "12:00 - 12:45", subject: "Not set", teacher: "", room: "C22" },
-      { time: "1:00 - 1:45", subject: "Not set", teacher: "", room: "A10" },
-      { time: "2:00 - 3:00", subject: "Not set", teacher: "", room: "Gym" }
+      { time: "9:30 - 10:20", subject: "Mathematics", teacher: "Mr. Smith", room: "A12" },
+      { time: "10:20 - 11:00", subject: "Physics", teacher: "Dr. Johnson", room: "B05" },
+      { time: "11:00 - 11:40", subject: "Chemistry", teacher: "Ms. Williams", room: "Lab 3" },
+      { time: "12:00 - 12:45", subject: "Lunch", teacher: "", room: "Cafeteria" },
+      { time: "1:00 - 1:45", subject: "English Literature", teacher: "Mrs. Brown", room: "A10" },
+      { time: "2:00 - 3:00", subject: "Physical Education", teacher: "Coach Taylor", room: "Gym" }
     ]},
-    // ... (rest of the timetable data remains the same)
+    { day: "Tuesday", periods: [
+      { time: "9:00 - 10:00", subject: "World History", teacher: "Mr. Davis", room: "D08" },
+      { time: "10:00 - 11:00", subject: "Geography", teacher: "Ms. Wilson", room: "D08" },
+      { time: "11:30 - 12:30", subject: "Computer Science", teacher: "Mr. Clark", room: "Lab 1" },
+      { time: "1:30 - 2:30", subject: "Algebra", teacher: "Mr. Smith", room: "A12" },
+      { time: "2:30 - 3:30", subject: "Art History", teacher: "Ms. Martinez", room: "Studio 2" }
+    ]},
+    { day: "Wednesday", periods: [
+      { time: "9:00 - 10:30", subject: "Physics Lab", teacher: "Dr. Johnson", room: "Lab 2" },
+      { time: "10:30 - 11:30", subject: "Organic Chemistry", teacher: "Ms. Williams", room: "Lab 3" },
+      { time: "12:00 - 1:00", subject: "Research", teacher: "Ms. Adams", room: "Library" },
+      { time: "1:30 - 2:30", subject: "Calculus", teacher: "Mr. Smith", room: "A12" },
+      { time: "2:30 - 3:30", subject: "Music Theory", teacher: "Mr. Thompson", room: "Music Room" }
+    ]},
+    { day: "Thursday", periods: [
+      { time: "9:00 - 10:00", subject: "Creative Writing", teacher: "Mrs. Brown", room: "A10" },
+      { time: "10:00 - 11:00", subject: "Drama", teacher: "Ms. Garcia", room: "Auditorium" },
+      { time: "11:30 - 12:30", subject: "Geometry", teacher: "Mr. Smith", room: "A12" },
+      { time: "1:30 - 2:30", subject: "Astrophysics", teacher: "Dr. Johnson", room: "B05" },
+      { time: "2:30 - 3:30", subject: "Study Hall", teacher: "Mr. White", room: "A15" }
+    ]},
+    { day: "Friday", periods: [
+      { time: "9:00 - 10:00", subject: "Biochemistry", teacher: "Ms. Williams", room: "Lab 3" },
+      { time: "10:00 - 11:00", subject: "Swimming", teacher: "Coach Taylor", room: "Pool" },
+      { time: "11:30 - 12:30", subject: "Statistics", teacher: "Mr. Smith", room: "A12" },
+      { time: "1:30 - 2:30", subject: "European History", teacher: "Mr. Davis", room: "D08" },
+      { time: "2:30 - 3:30", subject: "Robotics Club", teacher: "Mr. Clark", room: "Lab 1" }
+    ]}
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-6 text-indigo-800">Weekly Schedule</h1>
-        <p className="text-center text-lg text-indigo-600 mb-8">View your classes and activities for the week</p>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Calendar Section */}
-          <div className="bg-white rounded-xl shadow-xl p-6">
-            <h2 className="text-2xl font-semibold text-indigo-700 mb-4">Calendar</h2>
-            <div className="flex justify-center">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                className="rounded-xl border-0 shadow-md"
-                classNames={{
-                  months: "w-full",
-                  month: "w-full space-y-4",
-                  caption: "flex justify-center pt-1 relative items-center",
-                  caption_label: "text-xl font-semibold text-indigo-700",
-                  nav: "flex items-center gap-2",
-                  nav_button: "h-9 w-9 flex items-center justify-center rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-600 transition-colors",
-                  nav_button_previous: "absolute left-1",
-                  nav_button_next: "absolute right-1",
-                  table: "w-full border-collapse",
-                  head_row: "flex",
-                  head_cell: "text-indigo-500 rounded-md w-10 font-medium text-sm",
-                  row: "flex w-full mt-1",
-                  cell: "h-10 w-10 text-center text-sm p-0 relative [&:has([aria-selected])]:bg-indigo-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-                  day: "h-9 w-9 p-0 font-medium aria-selected:opacity-100 hover:bg-indigo-100 hover:text-indigo-800 rounded-full flex items-center justify-center",
-                  day_selected: "bg-indigo-600 text-white hover:bg-indigo-700 hover:text-white focus:bg-indigo-700 focus:text-white",
-                  day_today: "border border-indigo-400 text-indigo-800",
-                  day_outside: "text-gray-400 opacity-50",
-                }}
-                captionLayout="dropdown"
-                fromYear={2020}
-                toYear={2030}
-              />
-            </div>
-            
-            {/* Selected Date Info */}
-            {date && (
-              <div className="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg border border-indigo-100">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-sm font-medium text-indigo-500">Selected Date</h3>
-                    <p className="text-lg font-semibold text-indigo-800">
-                      {date.toLocaleDateString('en-US', { weekday: 'long' })}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-indigo-700">
-                      {date.getDate()}
-                    </p>
-                    <p className="text-sm text-indigo-600">
-                      {date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                    </p>
-                  </div>
+    <div className="min-h-screen bg-white">
+      {/* Header with improved padding */}
+      <header className="px-6 py-4 md:px-8 md:py-6 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Weekly Schedule</h1>
+          <p className="text-gray-600 mt-1">Your academic timetable for the week</p>
+        </div>
+      </header>
+
+      {/* Main content with better spacing */}
+      <main className="px-4 py-6 md:px-8 md:py-8">
+        <div className="max-w-6xl mx-auto">
+          {/* Timetable Grid */}
+          <div className="space-y-8">
+            {timetable.map((daySchedule) => (
+              <div key={daySchedule.day} className="border border-gray-100 rounded-lg overflow-hidden">
+                {/* Day Header */}
+                <div className="bg-gray-50 px-4 py-3 border-b border-gray-100">
+                  <h2 className="text-lg font-semibold text-gray-900">{daySchedule.day}</h2>
                 </div>
-              </div>
-            )}
-          </div>
-          
-          {/* Timetable Section */}
-          <div className="bg-white rounded-xl shadow-xl p-6">
-            <h2 className="text-2xl font-semibold text-indigo-700 mb-4">Weekly Timetable</h2>
-            
-            <div className="space-y-4">
-              {timetable.map((daySchedule) => (
-                <div key={daySchedule.day} className="border-b border-indigo-100 pb-4 last:border-0">
-                  <h3 className="text-lg font-medium text-indigo-600 mb-2">{daySchedule.day}</h3>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                    {daySchedule.periods.map((period, index) => (
-                      <div 
-                        key={index} 
-                        className="bg-indigo-50 p-3 rounded-lg hover:bg-indigo-100 transition-colors"
-                      >
-                        <div className="flex justify-between items-start">
-                          <span className="text-xs font-medium text-indigo-500">{period.time}</span>
-                          {period.room && (
-                            <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded">
-                              {period.room}
-                            </span>
-                          )}
+                
+                {/* Periods Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 p-4">
+                  {daySchedule.periods.map((period, index) => (
+                    <div 
+                      key={index}
+                      className="relative p-4 rounded-lg border border-gray-200 transition-all 
+                      hover:border-gray-300 hover:shadow-md hover:translate-y-[-2px]
+                      group"
+                    >
+                      {/* Time badge */}
+                      <div className="absolute top-3 right-3 bg-gray-100 group-hover:bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full transition-colors">
+                        {period.time}
+                      </div>
+                      
+                      {/* Room badge */}
+                      {period.room && (
+                        <div className="absolute top-3 left-3 bg-white border border-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full">
+                          {period.room}
                         </div>
-                        <h4 className="font-medium text-indigo-800 mt-1">{period.subject}</h4>
+                      )}
+                      
+                      {/* Main content */}
+                      <div className="pt-8">
+                        <h3 className="font-medium text-gray-900 text-lg mb-1">
+                          {period.subject}
+                        </h3>
                         {period.teacher && (
-                          <p className="text-xs text-indigo-600 mt-1">With {period.teacher}</p>
+                          <p className="text-sm text-gray-600">With {period.teacher}</p>
                         )}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
-        
-        {/* Current Period Info (mobile only) */}
-        <div className="lg:hidden mt-8 bg-white rounded-xl shadow-xl p-6">
-          <h2 className="text-xl font-semibold text-indigo-700 mb-3">Current Period</h2>
-          <div className="bg-indigo-600 text-white p-4 rounded-lg">
-            <p className="font-medium">Mathematics with Mr. Smith</p>
-            <p className="text-sm opacity-90">8:00 AM - 9:00 AM</p>
-            <p className="text-sm mt-2">Room A12</p>
-          </div>
-        </div>
-      </div>
+      </main>
     </div>
   )
 }

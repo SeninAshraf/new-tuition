@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { FeatureBentoGrid } from "./_components/FeatureBentoGrid";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
@@ -9,9 +9,12 @@ import { AnimatedList } from "@/components/magicui/animated-list";
 import { AnimatedListDemo } from "./_components/AnimatedListDemo";
 import { AnimatedTestimonialsDemo } from "./_components/AnimatedTestimonialsDemo";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+import { VideoText } from "@/components/magicui/video-text";
 
 export default function HeroSectionOne() {
   const { isSignedIn } = useUser();
+
+  const words = "Welcome to Selinte Tuition".split(" ");
 
   return (
     <div className="relative my-10 flex flex-col items-center justify-center">
@@ -26,25 +29,30 @@ export default function HeroSectionOne() {
         <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
       </div>
       <div className="px-4 py-10 md:py-20">
-        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
-          {"Welcome To Selinte Tuition"
-            .split(" ")
-            .map((word, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                transition={{
-                  duration: 0.3,
-                  delay: index * 0.1,
-                  ease: "easeInOut",
-                }}
-                className="mr-2 inline-block"
-              >
-                {word}
-              </motion.span>
-            ))}
+        <div className="relative h-[200px] w-full overflow-hidden">
+          <VideoText src="https://cdn.magicui.design/ocean-small.webm">
+            hello.
+          </VideoText>
+        </div>
+        
+        <h1 className="relative z-10 mx-auto max-w-4xl py-4 text-center text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 md:text-6xl">
+          {words.map((word, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+                ease: "easeInOut",
+              }}
+              className="mr-2 inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
         </h1>
+        
         <motion.p
           initial={{
             opacity: 0,
@@ -58,8 +66,9 @@ export default function HeroSectionOne() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          We’re cooking up something delicious. Website-wise 😴💻
+          We're cooking up something delicious. Website-wise 😴💻
         </motion.p>
+        
         <Link href={isSignedIn ? '/dashboard' : '/sign-in'}>
           <motion.div
             initial={{
@@ -79,6 +88,7 @@ export default function HeroSectionOne() {
             </InteractiveHoverButton>
           </motion.div>
         </Link>
+        
         <motion.div
           initial={{
             opacity: 0,
@@ -94,7 +104,9 @@ export default function HeroSectionOne() {
           }}
           className="relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
         >
+      
         </motion.div>
+        
         <div>
           <AnimatedListDemo />
         </div>
@@ -116,8 +128,6 @@ const Navbar = () => {
       {!isSignedIn ? (
         <Link href={'/sign-in'}>
           <InteractiveHoverButton>Login</InteractiveHoverButton>
-            
-      
         </Link>
       ) : (
         <div className="flex gap-5 items-center">
