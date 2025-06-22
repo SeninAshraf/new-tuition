@@ -1,12 +1,15 @@
 "use client"
 
 import * as React from "react"
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+
+
 
 export default function SchedulePage() {
   // Sample timetable data with more subjects
   const timetable = [
     { day: "Monday", periods: [
-      { time: "9:30 - 10:20", subject: "Mathematics", teacher: "Mr. Smith", room: "A12" },
+      { time: "9:30 - 10:20", subject: "AAD", teacher: "Mr. Smith", room: "A12" },
       { time: "10:20 - 11:00", subject: "Physics", teacher: "Dr. Johnson", room: "B05" },
       { time: "11:00 - 11:40", subject: "Chemistry", teacher: "Ms. Williams", room: "Lab 3" },
       { time: "12:00 - 12:45", subject: "Lunch", teacher: "", room: "Cafeteria" },

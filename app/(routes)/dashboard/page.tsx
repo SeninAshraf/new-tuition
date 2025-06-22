@@ -2,31 +2,33 @@
 
 import React from 'react';
 import { BentoDemo } from './_components/BentoDemo';
-import { BentoGrid } from '@/components/ui/bento-grid';
 import { WobbleCardDemo } from './_components/WobbleCardDemo';
 import { ContainerTextFlip } from "@/components/ui/container-text-flip";
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
-function ContainerTextFlipDemo() {
+const ContainerTextFlipDemo = () => {
   return (
     <ContainerTextFlip
       words={["Explore", "Discover", "Learn"]}
     />
   );
-}
+};
 
 export default function Dashboard() {
   return (
-    <div className="flex flex-col items-center min-h-screen py-8 px-4">
+    <div className="relative flex flex-col items-center min-h-screen py-8 px-4">
+      {/* Background effect */}
+      <FlickeringGrid className="absolute inset-0 -z-10" />
+      
       {/* ContainerTextFlip Demo */}
       <div className="my-8">
         <ContainerTextFlipDemo />
       </div>
       
-      {/* BentoGrid Section */}
+      {/* WobbleCard Section */}
       <div className="w-full max-w-6xl my-8">
-        <BentoDemo />
+        <WobbleCardDemo />
       </div>
-    
     </div>
   );
 }
