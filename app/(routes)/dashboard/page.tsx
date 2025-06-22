@@ -27,7 +27,7 @@ export default function Dashboard() {
       
       {/* WobbleCard Section */}
       <div className="w-full max-w-6xl my-8">
-        <WobbleCardDemo />
+        <BentoDemo />
       </div>
     </div>
   );
