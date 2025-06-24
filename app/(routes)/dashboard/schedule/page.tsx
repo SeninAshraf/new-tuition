@@ -2,8 +2,7 @@
 
 import * as React from "react"
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-
-
+import { TypingAnimation } from "@/components/magicui/typing-animation";
 
 export default function SchedulePage() {
   // Sample timetable data with more subjects
@@ -47,65 +46,63 @@ export default function SchedulePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header with improved padding */}
-      <header className="px-6 py-4 md:px-8 md:py-6 border-b border-gray-100">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Weekly Schedule</h1>
-          <p className="text-gray-600 mt-1">Your academic timetable for the week</p>
-        </div>
-      </header>
+    <div className="relative flex flex-col items-center min-h-screen py-8 px-4">
+      {/* Background effect */}
+      <FlickeringGrid className="absolute inset-0 -z-10" />
+      
+      {/* Header */}
+      <div className="w-full max-w-6xl mb-8">
+        <TypingAnimation>Class Schedule</TypingAnimation>
+      </div>
 
-      {/* Main content with better spacing */}
-      <main className="px-4 py-6 md:px-8 md:py-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Timetable Grid */}
-          <div className="space-y-8">
-            {timetable.map((daySchedule) => (
-              <div key={daySchedule.day} className="border border-gray-100 rounded-lg overflow-hidden">
-                {/* Day Header */}
-                <div className="bg-gray-50 px-4 py-3 border-b border-gray-100">
-                  <h2 className="text-lg font-semibold text-gray-900">{daySchedule.day}</h2>
-                </div>
-                
-                {/* Periods Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 p-4">
-                  {daySchedule.periods.map((period, index) => (
-                    <div 
-                      key={index}
-                      className="relative p-4 rounded-lg border border-gray-200 transition-all 
-                      hover:border-gray-300 hover:shadow-md hover:translate-y-[-2px]
-                      group"
-                    >
-                      {/* Time badge */}
-                      <div className="absolute top-3 right-3 bg-gray-100 group-hover:bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full transition-colors">
-                        {period.time}
-                      </div>
-                      
-                      {/* Room badge */}
-                      {period.room && (
-                        <div className="absolute top-3 left-3 bg-white border border-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full">
-                          {period.room}
-                        </div>
-                      )}
-                      
-                      {/* Main content */}
-                      <div className="pt-8">
-                        <h3 className="font-medium text-gray-900 text-lg mb-1">
-                          {period.subject}
-                        </h3>
-                        {period.teacher && (
-                          <p className="text-sm text-gray-600">With {period.teacher}</p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+      {/* Main content */}
+      <div className="w-full max-w-6xl">
+        {/* Timetable Grid */}
+        <div className="space-y-8">
+          {timetable.map((daySchedule) => (
+            <div key={daySchedule.day} className="border border-gray-100 rounded-lg overflow-hidden bg-white/80 backdrop-blur-sm">
+              {/* Day Header */}
+              <div className="bg-gray-50/90 px-4 py-3 border-b border-gray-100">
+                <h2 className="text-lg font-semibold text-gray-900">{daySchedule.day}</h2>
               </div>
-            ))}
-          </div>
+              
+              {/* Periods Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 p-4">
+                {daySchedule.periods.map((period, index) => (
+                  <div 
+                    key={index}
+                    className="relative p-4 rounded-lg border border-gray-200 bg-white/60 backdrop-blur-sm transition-all 
+                    hover:border-gray-300 hover:shadow-md hover:translate-y-[-2px] hover:bg-white/80
+                    group"
+                  >
+                    {/* Time badge */}
+                    <div className="absolute top-3 right-3 bg-gray-100/80 group-hover:bg-gray-200/80 text-gray-700 text-xs px-2 py-1 rounded-full transition-colors">
+                      {period.time}
+                    </div>
+                    
+                    {/* Room badge */}
+                    {period.room && (
+                      <div className="absolute top-3 left-3 bg-white/80 border border-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full">
+                        {period.room}
+                      </div>
+                    )}
+                    
+                    {/* Main content */}
+                    <div className="pt-8">
+                      <h3 className="font-medium text-gray-900 text-lg mb-1">
+                        {period.subject}
+                      </h3>
+                      {period.teacher && (
+                        <p className="text-sm text-gray-600">With {period.teacher}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </main>
+      </div>
     </div>
   )
 }

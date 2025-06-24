@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, FileText, Youtube } from 'lucide-react';
+import { ArrowLeft, FileText, Youtube, Download } from 'lucide-react';
 import Link from 'next/link';
 
 // Define the type for materials
@@ -13,16 +13,41 @@ type Material = {
   preview?: string;
 };
 
-// Materials data (you can extend it)
+// Materials data (extended with S7 and YouTube example)
 const allMaterials: Record<string, Record<string, Material[]>> = {
   s6: {
     r: [
       {
         type: 'pdf',
-        title: 'IMPORTANT TOPICS BASED ON PRVS PAPERS',
+        title: 'IMPORTANT TOPICS BASED ON PREVIOUS PAPERS',
         date: '2025-03-10',
         url: 'materials/r/rqbank.pdf',
         preview: 'materials/aad/basics-preview.jpg',
+      },
+    ],
+  },
+  s7: {
+    ai: [
+      {
+        type: 'pdf',
+        title: 'Artificial Intelligence Fundamentals',
+        date: '2025-04-15',
+        url: 'materials/ai/ai-fundamentals.pdf',
+        preview: 'materials/ai/ai-preview.jpg',
+      },
+      {
+        type: 'youtube',
+        title: 'Machine Learning Crash Course',
+        date: '2025-04-20',
+        url: 'https://www.youtube.com/watch?v=example123',
+      },
+    ],
+    cc: [
+      {
+        type: 'pdf',
+        title: 'Cloud Computing Architecture',
+        date: '2025-05-01',
+        url: 'materials/cc/cloud-architecture.pdf',
       },
     ],
   },
@@ -35,6 +60,16 @@ export default function SubjectMaterials() {
 
   const semesterKey = `s${semesterId}`;
   const materials = allMaterials[semesterKey]?.[subjectCode] ?? [];
+
+  const handleDownload = (url: string, title: string) => {
+    // Create a temporary anchor element
+    const a = document.createElement('a');
+    a.href = `/${url}`;
+    a.download = title.toLowerCase().replace(/\s+/g, '-') + '.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
@@ -68,11 +103,11 @@ export default function SubjectMaterials() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow"
+            className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow bg-white dark:bg-gray-800"
           >
             {material.type === 'pdf' ? (
               <div className="h-full flex flex-col">
-                <div className="bg-gray-100 dark:bg-gray-800 p-4 flex items-center justify-center">
+                <div className="bg-gray-100 dark:bg-gray-700 p-4 flex items-center justify-center">
                   <FileText className="h-12 w-12 text-red-500" />
                 </div>
                 <div className="p-4 flex-grow">
@@ -83,20 +118,26 @@ export default function SubjectMaterials() {
                     {material.date}
                   </p>
                 </div>
-                <div className="p-4 border-t border-gray-100 dark:border-gray-700">
+                <div className="p-4 border-t border-gray-100 dark:border-gray-700 flex gap-2">
                   <a
                     href={`/${material.url}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full block text-center py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors text-sm"
+                    className="flex-1 text-center py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors text-sm"
                   >
                     View PDF
                   </a>
+                  <button
+                    onClick={() => handleDownload(material.url, material.title)}
+                    className="flex items-center justify-center py-2 px-4 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded transition-colors text-sm"
+                  >
+                    <Download className="h-4 w-4" />
+                  </button>
                 </div>
               </div>
             ) : (
               <div className="h-full flex flex-col">
-                <div className="bg-gray-100 dark:bg-gray-800 p-4 flex items-center justify-center">
+                <div className="bg-gray-100 dark:bg-gray-700 p-4 flex items-center justify-center">
                   <Youtube className="h-12 w-12 text-red-500" />
                 </div>
                 <div className="p-4 flex-grow">
@@ -112,9 +153,10 @@ export default function SubjectMaterials() {
                     href={material.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full block text-center py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded transition-colors text-sm"
+                    className="w-full flex items-center justify-center py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded transition-colors text-sm"
                   >
-                    Watch on YouTube
+                    <Youtube className="h-4 w-4 mr-2" />
+                    Watch Video
                   </a>
                 </div>
               </div>
