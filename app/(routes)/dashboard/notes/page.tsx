@@ -7,11 +7,6 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 
 export default function Notes() {
   const semesters = [
-    { id: 1, name: 'Semester 1', color: 'from-blue-500 to-blue-600' },
-    { id: 2, name: 'Semester 2', color: 'from-emerald-500 to-emerald-600' },
-    { id: 3, name: 'Semester 3', color: 'from-violet-500 to-violet-600' },
-    { id: 4, name: 'Semester 4', color: 'from-amber-500 to-amber-600' },
-    { id: 5, name: 'Semester 5', color: 'from-rose-500 to-rose-600' },
     { id: 6, name: 'Semester 6', color: 'from-indigo-500 to-indigo-600' },
     { id: 7, name: 'Semester 7', color: 'from-red-500 to-red-600' },
     { id: 8, name: 'Semester 8', color: 'from-teal-500 to-teal-600' },

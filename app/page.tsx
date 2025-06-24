@@ -14,8 +14,6 @@ import { VideoText } from "@/components/magicui/video-text";
 export default function HeroSectionOne() {
   const { isSignedIn } = useUser();
 
-  const words = "Welcome to Selinte Tuition".split(" ");
-
   return (
     <div className="relative my-10 flex flex-col items-center justify-center">
       <Navbar />
@@ -34,24 +32,6 @@ export default function HeroSectionOne() {
             hello.
           </VideoText>
         </div>
-        
-        <h1 className="relative z-10 mx-auto max-w-4xl py-4 text-center text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 md:text-6xl">
-          {words.map((word, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{
-                duration: 0.3,
-                delay: index * 0.1,
-                ease: "easeInOut",
-              }}
-              className="mr-2 inline-block"
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
         
         <motion.p
           initial={{
@@ -138,6 +118,5 @@ const Navbar = () => {
         </div>
       )}
     </nav>
-    
   );
 };

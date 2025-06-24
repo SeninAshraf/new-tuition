@@ -50,8 +50,8 @@ export default function SchedulePage() {
       {/* Background effect */}
       <FlickeringGrid className="absolute inset-0 -z-10" />
       
-      {/* Header */}
-      <div className="w-full max-w-6xl mb-8">
+      {/* Header - Centered */}
+      <div className="w-full max-w-6xl mb-8 text-center">
         <TypingAnimation>Class Schedule</TypingAnimation>
       </div>
 
