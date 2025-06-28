@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { TypingAnimation } from "@/components/magicui/typing-animation";
 
 export default function SchedulePage() {
@@ -47,9 +46,6 @@ export default function SchedulePage() {
 
   return (
     <div className="relative flex flex-col items-center min-h-screen py-8 px-4">
-      {/* Background effect */}
-      <FlickeringGrid className="absolute inset-0 -z-10" />
-      
       {/* Header - Centered */}
       <div className="w-full max-w-6xl mb-8 text-center">
         <TypingAnimation>Class Schedule</TypingAnimation>

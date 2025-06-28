@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import { BookOpenText, School, Clock, BarChart3, Users, GraduationCap, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 
 export default function Notes() {
@@ -13,8 +12,6 @@ export default function Notes() {
 
   return (
     <div className="relative flex flex-col items-center min-h-screen py-8 px-4">
-      <FlickeringGrid className="absolute inset-0 -z-10" />
-      
       <div className="w-full max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
