@@ -29,7 +29,7 @@ const semesterSubjects = {
     { name: 'International Economics', code: 'ieft', credits: 3 }
   ],
   7: [
-    { name: 'Syllabus', code: 'AIDS', credits: 0 },
+    { name: 'Syllabus', code: 'ai', credits: 0 },
     { name: 'Foundation Of Deep Learning', code: 'deep', credits: 3 },
     { name: 'Cloud Computing', code: 'cloud', credits: 3 },
     { name: 'Information Retrieval', code: 'info', credits: 3 },

@@ -27,7 +27,7 @@ const allMaterials: Record<string, Record<string, Material[]>> = {
     ],
   },
   s7: {
-    AIDS: [
+    ai: [
       {
         type: 'pdf',
         title: 'Syllabus',
