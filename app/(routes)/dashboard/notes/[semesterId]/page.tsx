@@ -29,10 +29,12 @@ const semesterSubjects = {
     { name: 'International Economics', code: 'ieft', credits: 3 }
   ],
   7: [
-    { name: 'Artificial Intelligence', code: 'ai', credits: 4 },
-    { name: 'Machine Learning', code: 'ml', credits: 4 },
-    { name: 'Cloud Computing', code: 'cc', credits: 3 },
-    { name: 'Cyber Security', code: 'cs', credits: 3 }
+    { name: 'Syllabus', code: 'AIDS', credits: 0 },
+    { name: 'Foundation Of Deep Learning', code: 'deep', credits: 3 },
+    { name: 'Cloud Computing', code: 'cloud', credits: 3 },
+    { name: 'Information Retrieval', code: 'info', credits: 3 },
+    { name: 'Industrial Safety Engineering', code: 'ind', credits: 3 },
+    { name: 'Deep Learning Lab', code: 'lab', credits: 2 }
   ],
   8: [
     { name: 'Advanced Topics in CS', code: 'CS501', credits: 4 },

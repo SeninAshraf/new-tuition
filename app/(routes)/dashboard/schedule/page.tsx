@@ -7,40 +7,44 @@ export default function SchedulePage() {
   // Sample timetable data with more subjects
   const timetable = [
     { day: "Monday", periods: [
-      { time: "9:30 - 10:20", subject: "AAD", teacher: "Mr. Smith", room: "A12" },
-      { time: "10:20 - 11:00", subject: "Physics", teacher: "Dr. Johnson", room: "B05" },
-      { time: "11:00 - 11:40", subject: "Chemistry", teacher: "Ms. Williams", room: "Lab 3" },
-      { time: "12:00 - 12:45", subject: "Lunch", teacher: "", room: "Cafeteria" },
-      { time: "1:00 - 1:45", subject: "English Literature", teacher: "Mrs. Brown", room: "A10" },
-      { time: "2:00 - 3:00", subject: "Physical Education", teacher: "Coach Taylor", room: "Gym" }
+      { time: "9:30 - 10:20", subject: "Project", teacher: "Sherikh Sir", room: "C110" },
+      { time: "10:20 - 11:15", subject: "Project", teacher: "Sherikh Sir", room: "C110" },
+      { time: "11:30 - 12:30", subject: "Project", teacher: "Sherikh Sir", room: "C110" },
+      { time: "1:30 - 2:15", subject: "Elective", teacher: "Viju sir", room: "C110" },
+      { time: "2:15-3:10", subject: "Deep Learning", teacher: "Surya Miss", room: "C110" },
+      { time: "3:15-4:30", subject: "Industrial Safety", teacher: "Sherikh Sir", room: "C110" }
     ]},
     { day: "Tuesday", periods: [
-      { time: "9:00 - 10:00", subject: "World History", teacher: "Mr. Davis", room: "D08" },
-      { time: "10:00 - 11:00", subject: "Geography", teacher: "Ms. Wilson", room: "D08" },
-      { time: "11:30 - 12:30", subject: "Computer Science", teacher: "Mr. Clark", room: "Lab 1" },
-      { time: "1:30 - 2:30", subject: "Algebra", teacher: "Mr. Smith", room: "A12" },
-      { time: "2:30 - 3:30", subject: "Art History", teacher: "Ms. Martinez", room: "Studio 2" }
+      { time: "9:30 - 10:20", subject: "Open Elective", teacher: "Abin Sir", room: "C110" },
+      { time: "10:20 - 11:15", subject: "Open Elective", teacher: "Abin Sir", room: "C110" },
+      { time: "11:30 - 12:30", subject: "Industrial Safety", teacher: "Sherikh Sir", room: "C110" },
+      { time: "1:30 - 2:15", subject: "Elective", teacher: "Viju sir", room: "C110" },
+      { time: "2:15-3:10", subject: "Deep Learning", teacher: "Surya Miss", room: "C110" },
+      { time: "3:15-4:30", subject: "Seminar", teacher: "Fahma Miss", room: "C110" }
     ]},
     { day: "Wednesday", periods: [
-      { time: "9:00 - 10:30", subject: "Physics Lab", teacher: "Dr. Johnson", room: "Lab 2" },
-      { time: "10:30 - 11:30", subject: "Organic Chemistry", teacher: "Ms. Williams", room: "Lab 3" },
-      { time: "12:00 - 1:00", subject: "Research", teacher: "Ms. Adams", room: "Library" },
-      { time: "1:30 - 2:30", subject: "Calculus", teacher: "Mr. Smith", room: "A12" },
-      { time: "2:30 - 3:30", subject: "Music Theory", teacher: "Mr. Thompson", room: "Music Room" }
+      { time: "9:30 - 10:20", subject: "DL LAB & Seminar", teacher: "Haseena Miss", room: "C110" },
+      { time: "10:20 - 11:15", subject: "DL LAB & Seminar", teacher: "Abin Sir", room: "C110" },
+      { time: "11:30 - 12:30", subject: "DL LAB & Seminar", teacher: "Fahma Miss", room: "C110" },
+      { time: "1:30 - 2:15", subject: "Industrial Safety", teacher: "Sherikh Sir", room: "C110" },
+      { time: "2:15-3:10", subject: "Open Elective", teacher: "Abin Sir", room: "C110" },
+      { time: "3:15-4:30", subject: "Open Elective", teacher: "Abin Sir", room: "C110" }
     ]},
     { day: "Thursday", periods: [
-      { time: "9:00 - 10:00", subject: "Creative Writing", teacher: "Mrs. Brown", room: "A10" },
-      { time: "10:00 - 11:00", subject: "Drama", teacher: "Ms. Garcia", room: "Auditorium" },
-      { time: "11:30 - 12:30", subject: "Geometry", teacher: "Mr. Smith", room: "A12" },
-      { time: "1:30 - 2:30", subject: "Astrophysics", teacher: "Dr. Johnson", room: "B05" },
-      { time: "2:30 - 3:30", subject: "Study Hall", teacher: "Mr. White", room: "A15" }
+      { time: "9:30 - 10:20", subject: "Deep Learning", teacher: "Surya Miss", room: "C110" },
+      { time: "10:20 - 11:15", subject: "Elective", teacher: "Viju Sir", room: "C110" },
+      { time: "11:30 - 12:30", subject: "Industrial Safety", teacher: "Sherikh Sir", room: "C110" },
+      { time: "1:30 - 2:15", subject: "DL LAB & SEMINAR", teacher: "Bhavya Miss", room: "C110" },
+      { time: "2:15-3:10", subject: "DL LAB & SEMINAR", teacher: "Bhavya Miss", room: "C110" },
+      { time: "3:15-4:30", subject: "DL LAB & SEMINAR", teacher: "Bhavya Miss", room: "C110" }
     ]},
     { day: "Friday", periods: [
-      { time: "9:00 - 10:00", subject: "Biochemistry", teacher: "Ms. Williams", room: "Lab 3" },
-      { time: "10:00 - 11:00", subject: "Swimming", teacher: "Coach Taylor", room: "Pool" },
-      { time: "11:30 - 12:30", subject: "Statistics", teacher: "Mr. Smith", room: "A12" },
-      { time: "1:30 - 2:30", subject: "European History", teacher: "Mr. Davis", room: "D08" },
-      { time: "2:30 - 3:30", subject: "Robotics Club", teacher: "Mr. Clark", room: "Lab 1" }
+      { time: "9:30 - 10:20", subject: "Elective", teacher: "Fahma Miss", room: "C110" },
+      { time: "10:20 - 11:15", subject: "Deep Learning", teacher: "Surya Miss", room: "C110" },
+      { time: "11:30 - 12:30", subject: "Seminar", teacher: "Haseena Miss", room: "C110" },
+      { time: "1:30 - 2:15", subject: "Project", teacher: "Viju sir", room: "C110" },
+      { time: "2:15-3:10", subject: "Project", teacher: "Viju Sir", room: "C110" },
+      { time: "3:15-4:30", subject: "Project", teacher: "Sherikh Sir", room: "C110" }
     ]}
   ]
 

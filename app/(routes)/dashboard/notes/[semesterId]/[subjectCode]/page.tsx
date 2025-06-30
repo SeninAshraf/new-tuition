@@ -27,22 +27,22 @@ const allMaterials: Record<string, Record<string, Material[]>> = {
     ],
   },
   s7: {
-    ai: [
+    AIDS: [
       {
         type: 'pdf',
-        title: 'Artificial Intelligence Fundamentals',
-        date: '2025-04-15',
-        url: 'materials/ai/ai-fundamentals.pdf',
+        title: 'Syllabus',
+        date: '2025-06-30',
+        url: 'materials/ai/syllabus.pdf',
         preview: 'materials/ai/ai-preview.jpg',
       },
       {
         type: 'youtube',
-        title: 'Machine Learning Crash Course',
-        date: '2025-04-20',
-        url: 'https://www.youtube.com/watch?v=example123',
+        title: 'Overall Guide',
+        date: '2025-06-30',
+        url: 'https://youtu.be/WNED5YVCuwM?si=E3Lr8hJ4siiBhLET',
       },
     ],
-    cc: [
+    deep: [
       {
         type: 'pdf',
         title: 'Cloud Computing Architecture',
