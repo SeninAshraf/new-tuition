@@ -172,6 +172,12 @@ export default function SubjectMaterials() {
           </p>
         </div>
       )}
+
+      {/* Added footer */}
+      <footer className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-6">
+        <p>Please keep checking continuously as new notes will be uploaded day by day.</p>
+        <p className="mt-2">We're constantly updating our resources to provide you with the best materials.</p>
+      </footer>
     </div>
   );
 }
