@@ -50,6 +50,28 @@ const allMaterials: Record<string, Record<string, Material[]>> = {
         url: 'materials/cc/cloud-architecture.pdf',
       },
     ],
+    cloud: [
+      {
+        type: 'pdf',
+        title: 'Module 1',
+        date: '2025-06-05',
+        url: 'materials/cloud/mod1.pdf',
+      },
+    ],
+    ind:[
+      {
+        type: 'pdf',
+        title: 'Syllabus',
+        date: '2025-06-05',
+        url: 'materials/cloud/syllabus.pdf',
+      },
+      {
+        type: 'pdf',
+        title: 'Module 1',
+        date: '2025-06-05',
+        url: 'materials/indus/mod1.pdf',
+      },
+    ],
   },
 };
 
